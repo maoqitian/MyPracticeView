@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="mao.com.mycustomview">
+
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:hardwareAccelerated="true"
+        >
+
+        <meta-data android:name="CIBN_PLAYER_APPKEY" android:value="ZjNmMjc2ODViOTgy" />
+        <service android:name="com.starschina.push.StarschinaPlayerService"
+            android:exported="true"
+            android:process=":player"/>
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.PieActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.PIE_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.TestViewActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.TEST_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.CheckViewActivity"
+            android:hardwareAccelerated="false"
+            >
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.CHECK_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.LeafLoadingActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.LEAF_LOADING_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.PathtestActivty">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.PATH_TEST" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.SpiderViewActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.SPIDER_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.BezierActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.BEZIER_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ElasticBallActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.ELASTIC_BALL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

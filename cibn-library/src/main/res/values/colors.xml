@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="black">#000000</color>
+
+    <color name="play_text_white_alpha">#ccf4f4f4</color>
+
+    <color name="video_seek_bg">#88888888</color>
+    <color name="gray">#C4C4C4</color>
+
+
+    <color name="simple_red">#D72828</color>
+    <color name="simple_gray">#737373</color>
+    <color name="play_text_white">#f4f4f4</color>
+    <color name="play_text_gray">#737373</color>
+    <color name="play_text_light_gray">#66737373</color>
+
+    <color name="menu_bg">#bb000000</color>
+    <color name="white">#ffffff</color>
+</resources>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c4c4c4">
+    
+    <com.starschina.sdk.player.ThinkoPlayerView
+        android:id="@+id/player"
+        android:layout_height="240dp"
+        android:layout_width="match_parent"/>
+    <!--<RelativeLayout -->
+        <!--android:id="@+id/player"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"/>-->
+
+    <RelativeLayout
+        android:id="@+id/review_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <RelativeLayout
+        android:id="@+id/ad_container"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginTop="3dp"
+        android:layout_below="@id/player"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/epg_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ad_container"
+        android:layout_marginTop="3dp"
+        />
+</RelativeLayout>

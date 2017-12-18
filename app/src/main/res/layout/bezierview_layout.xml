@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <mao.com.mycustomview.view.Bezier.BezierView2
+        android:id="@+id/bezier2_view"
+        android:layout_width="wrap_content"
+        android:layout_height="250dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal">
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/rb_point_two"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="控制点1"
+                android:checked="true"
+                />
+            <RadioButton
+                android:id="@+id/rb_point_one"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="控制点2" />
+        </RadioGroup>
+    </LinearLayout>
+</LinearLayout>

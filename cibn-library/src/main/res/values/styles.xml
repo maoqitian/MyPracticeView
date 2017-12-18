@@ -1,0 +1,11 @@
+<resources>
+
+     <style name="AppTheme">
+        <item name="android:windowBackground">@android:drawable/screen_background_light</item>
+        <item name="android:colorBackground">@android:color/background_light</item> 
+        <item name="android:seekBarStyle">@android:style/Widget.SeekBar</item>
+    </style>
+    <style name="NoBackgroundTheme" parent="android:Theme">
+        <item name="android:windowBackground">@null</item>
+    </style>
+</resources>

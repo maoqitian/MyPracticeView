@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/epg_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginTop="5dp">
+
+    <TextView
+        android:id="@+id/epg_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:ellipsize="end"
+        android:ems="10"
+        android:maxLines="2"
+        android:text="14:00 荒野求生"
+        android:textColor="@drawable/btn_color_menu"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/epg_play"
+        android:layout_width="60dp"
+        android:layout_height="30dp"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/btn_selector"
+        android:gravity="center"
+        android:text="直播中"
+        android:textColor="@drawable/btn_color_menu"
+        android:textSize="14sp"
+        android:visibility="gone" />
+
+    <!--  <ImageView
+          android:id="@+id/epg_reserver"
+          android:layout_width="30dp"
+          android:layout_height="30dp"
+          android:layout_marginRight="5dp"
+          android:layout_alignParentRight="true"
+          android:layout_centerVertical="true"
+          android:padding="5.0dp"
+          android:visibility="gone"
+          android:src="@drawable/selector_btn_reserver" />-->
+</RelativeLayout>

@@ -1,0 +1,30 @@
+<resources>
+
+    <string name="app_name">SdkDemo</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="title_prompt">提示</string>
+    <string name="exit_or_not">是否退出程序？</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="exit">退出</string>
+    
+    <string name="zoom_in">zoom in</string>
+    <string name="zoom_out">zoom out</string>
+    
+    <string name="greetings">This is an example from DOPOOL !</string>
+    <string name="loading">A Custom Loading View !</string>
+    
+    <string name="dopool_environment_demo">DopoolEnvironment Demo</string>
+    <string name="video_view_demo">VideoView Demo</string>
+    <string name="video_sdk_demo">Video SDK Demo</string>
+    
+    <string name="reload">重新加载</string>
+    <string name="tolive">回到直播</string>
+    <string name="switch_vod">换台</string>
+    <string name="aspect_ratio">宽高比</string>
+    
+    <string name="zoom">全屏</string>
+
+    <string name="live">直播</string>
+    <string name="vod">点播</string>
+</resources>

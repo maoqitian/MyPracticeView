@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >    
+    
+    <TextView android:id="@+id/greetings"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/greetings"
+        android:textColor="#FF000000"
+        android:background="#FFAAAAAA" />
+    
+    <dopool.MediaPlay.DopoolVideoView android:id="@+id/dopool_player"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/greetings"/>
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MyCustomView</string>
+    <string name="action_settings">Settings</string>
+    <string name="current_mplitude">Modify amplitude, current: %1$s</string>
+    <string name="current_Disparity">Modify amplitude gap, current: %1$s</string>
+    <string name="current_float_time">Modify movement speed, current: %1$s</string>
+    <string name="current_rotate_time">Modify rotation speed, current: %1$s</string>
+    <string name="delete_progress_btn_text">Clean up progress</string>
+    <string name="increase_the_progress_btn_text">Increase the progress： </string>
+</resources>
