@@ -16,7 +16,7 @@ import mao.com.mycustomview.action.Action;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball;
+    private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_check= (Button) findViewById(R.id.bt_check);
         bt_loading_view= (Button) findViewById(R.id.bt_loading);
         bt_path_test= (Button) findViewById(R.id.bt_path_test);
+        bt_path_test2= (Button) findViewById(R.id.bt_path_test2);
         bt_spider_view= (Button) findViewById(R.id.bt_spider_view);
         bt_bezier_view= (Button) findViewById(R.id.bt_bezier_view);
         bt_cibn= (Button) findViewById(R.id.bt_cibn);
@@ -40,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_check.setOnClickListener(this);
         bt_loading_view.setOnClickListener(this);
         bt_path_test.setOnClickListener(this);
+        bt_path_test2.setOnClickListener(this);
         bt_spider_view.setOnClickListener(this);
         bt_bezier_view.setOnClickListener(this);
         bt_cibn.setOnClickListener(this);
@@ -84,6 +86,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_elastic_ball:
                 intent=new Intent(Action.ACTION_ELASTIC_BALL);
+                startActivity(intent);
+                break;
+            case R.id.bt_path_test2:
+                intent=new Intent(Action.ACTION_PATH_TEST2);
                 startActivity(intent);
                 break;
         }

@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.View;
 
 /**
- * Created by lenovo on 2017/11/1 0001.
+ * Created by 毛麒添 on 2017/11/1 0001.
  * path 路径的用法测试  path的基本用法
  */
 

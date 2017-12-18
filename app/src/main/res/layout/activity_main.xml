@@ -73,4 +73,12 @@
         app:layout_constraintLeft_toRightOf="@id/bt_spider_view"
         app:layout_constraintTop_toBottomOf="@id/bt_bezier_view"
         />
+    <Button
+        android:id="@+id/bt_path_test2"
+        app:layout_constraintTop_toBottomOf="@id/bt_cibn"
+        app:layout_constraintLeft_toRightOf="@id/bt_elastic_ball"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="path2"
+        />
 </android.support.constraint.ConstraintLayout>

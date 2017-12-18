@@ -76,6 +76,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.Pathtest2Activiy">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.PATH_TEST2" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
