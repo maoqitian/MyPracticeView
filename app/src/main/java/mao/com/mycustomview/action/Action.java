@@ -12,6 +12,7 @@ public class Action {
     public static final String ACTION_LEAF_LOADING_VIEW = "com.mao.mycustomview.action.LEAF_LOADING_VIEW";
     public static final String ACTION_PATH_TEST = "com.mao.mycustomview.action.PATH_TEST";
     public static final String ACTION_PATH_TEST2 = "com.mao.mycustomview.action.PATH_TEST2";
+    public static final String ACTION_PATH_MEASURE = "com.mao.mycustomview.action.PATH_MEASURE";//测量
     public static final String ACTION_SPIDER_VIEW = "com.mao.mycustomview.action.SPIDER_VIEW";
     //贝塞尔曲线
     public static final String ACTION_BEZIER_VIEW = "com.mao.mycustomview.action.BEZIER_VIEW";

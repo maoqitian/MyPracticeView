@@ -82,6 +82,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.PathMeasureViewActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.PATH_MEASURE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

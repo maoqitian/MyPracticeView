@@ -81,4 +81,12 @@
         android:layout_height="wrap_content"
         android:text="path2"
         />
+    <Button
+        android:id="@+id/bt_path_measure"
+        app:layout_constraintTop_toBottomOf="@id/bt_cibn"
+        app:layout_constraintLeft_toRightOf="@id/bt_path_test2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="path_measure"
+        />
 </android.support.constraint.ConstraintLayout>

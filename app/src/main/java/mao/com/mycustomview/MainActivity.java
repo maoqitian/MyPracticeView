@@ -16,7 +16,7 @@ import mao.com.mycustomview.action.Action;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball;
+    private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_bezier_view= (Button) findViewById(R.id.bt_bezier_view);
         bt_cibn= (Button) findViewById(R.id.bt_cibn);
         bt_elastic_ball= (Button) findViewById(R.id.bt_elastic_ball);
+        bt_path_measure= (Button) findViewById(R.id.bt_path_measure);
         bt_test.setOnClickListener(this);
         bt_pie.setOnClickListener(this);
         bt_check.setOnClickListener(this);
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_bezier_view.setOnClickListener(this);
         bt_cibn.setOnClickListener(this);
         bt_elastic_ball.setOnClickListener(this);
+        bt_path_measure.setOnClickListener(this);
     }
 
     @Override
@@ -90,6 +92,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_path_test2:
                 intent=new Intent(Action.ACTION_PATH_TEST2);
+                startActivity(intent);
+                break;
+            case R.id.bt_path_measure:
+                intent=new Intent(Action.ACTION_PATH_MEASURE);
                 startActivity(intent);
                 break;
         }
