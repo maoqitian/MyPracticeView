@@ -1,8 +1,11 @@
 package mao.com.mycustomview.view.PathMeasure;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PathMeasure;
@@ -10,6 +13,8 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
+
+import mao.com.mycustomview.R;
 
 /**
  * Created by 毛麒添 on 2017/12/22 0022.
@@ -22,16 +27,33 @@ public class PathMeasureView extends View {
 
     private Paint mPaint;
 
+
+    //箭头图片变量
+    private float currentValue;// 用于纪录当前的位置,取值范围[0,1]映射Path的整个长度
+    private Bitmap mBitmap;// 箭头图片
+    private float[] pos;// 当前点的实际位置
+    private float[] tan;     // 当前点的tangent值,用于计算图片所需旋转的角度
+
+    private Matrix mMatrix;// 矩阵,用于对图片进行一些操作
+
+
     public PathMeasureView(Context context) {
         super(context);
-        init();
+        init(context);
     }
 
-    private void init() {
+    private void init(Context context) {
         mPaint=new Paint();
         mPaint.setColor(Color.BLACK);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeWidth(10); // 边框宽度  10
+
+        pos=new float[2];
+        tan=new float[2];
+        BitmapFactory.Options options=new BitmapFactory.Options();
+        options.inSampleSize = 2;       // 缩放图片
+        mBitmap=BitmapFactory.decodeResource(context.getResources(), R.drawable.jiantou,options);
+        mMatrix=new Matrix();
     }
 
     public PathMeasureView(Context context, @Nullable AttributeSet attrs) {
@@ -55,6 +77,38 @@ public class PathMeasureView extends View {
         //demo1(canvas);
         //demo2(canvas);
         //demo3(canvas);
+        demo4(canvas);
+
+    }
+
+    /**
+     * getPosTan 用于得到路径上某一长度的位置以及该位置的正切值 箭头图片绕圆轨道环绕
+     * @param canvas 画布对象
+     */
+    private void demo4(Canvas canvas) {
+
+        Path path=new Path();
+        path.addCircle(0,0,200, Path.Direction.CW);//添加一个圆形
+        PathMeasure pathMeasure=new PathMeasure(path,false);//创建一个PathMeasure
+        currentValue += 0.005;                                  // 计算当前的位置在总长度上的比例[0,1]
+        if (currentValue >= 1) {
+            currentValue = 0;
+        }
+
+        pathMeasure.getPosTan(pathMeasure.getLength()*currentValue,pos,tan);// 获取当前位置的坐标以及趋势
+
+        mMatrix.reset(); // 重置Matrix
+        //当前点在曲线上的方向，使用 Math.atan2(tan[1], tan[0]) 获取到正切角的弧度值。
+        float degrees= (float) (Math.atan2(tan[1],tan[0])*180.0/Math.PI);// 计算图片旋转角度
+
+        mMatrix.postRotate(degrees,mBitmap.getWidth()/2,mBitmap.getHeight()/2);//旋转图片
+        // 将图片绘制中心调整到与当前点重合
+        mMatrix.postTranslate(pos[0]-mBitmap.getWidth()/2,pos[1]-mBitmap.getHeight()/2);
+
+        canvas.drawPath(path, mPaint);                                   // 绘制 Path
+        canvas.drawBitmap(mBitmap, mMatrix, mPaint);                     // 绘制箭头
+
+        invalidate();                                                           // 重绘页面
 
     }
 
@@ -70,7 +124,7 @@ public class PathMeasureView extends View {
         PathMeasure pathMeasure=new PathMeasure(path,false);
         float length1 = pathMeasure.getLength();//获取第一个圆的周长
 
-        pathMeasure.nextContour();//跳转到下一个圆
+        pathMeasure.nextContour();//跳转到下一个圆,获取圆的周长
 
         float length2=pathMeasure.getLength();//获取第二个圆的周长
 
