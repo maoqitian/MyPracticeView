@@ -12,7 +12,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 /**
- * Created by lenovo on 2017/12/18 0018.
+ * Created by 毛麒添 on 2017/12/18 0018.
  * Path 应用完结
  */
 

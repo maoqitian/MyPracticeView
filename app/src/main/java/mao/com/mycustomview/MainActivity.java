@@ -16,7 +16,8 @@ import mao.com.mycustomview.action.Action;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure;
+    private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure,
+    bt_path_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,17 +27,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initView() {
-        bt_pie= (Button) findViewById(R.id.bt_pie);
-        bt_test= (Button) findViewById(R.id.bt_test);
-        bt_check= (Button) findViewById(R.id.bt_check);
-        bt_loading_view= (Button) findViewById(R.id.bt_loading);
-        bt_path_test= (Button) findViewById(R.id.bt_path_test);
-        bt_path_test2= (Button) findViewById(R.id.bt_path_test2);
-        bt_spider_view= (Button) findViewById(R.id.bt_spider_view);
-        bt_bezier_view= (Button) findViewById(R.id.bt_bezier_view);
-        bt_cibn= (Button) findViewById(R.id.bt_cibn);
-        bt_elastic_ball= (Button) findViewById(R.id.bt_elastic_ball);
-        bt_path_measure= (Button) findViewById(R.id.bt_path_measure);
+        bt_pie=  findViewById(R.id.bt_pie);
+        bt_test=  findViewById(R.id.bt_test);
+        bt_check=  findViewById(R.id.bt_check);
+        bt_loading_view=  findViewById(R.id.bt_loading);
+        bt_path_test=  findViewById(R.id.bt_path_test);
+        bt_path_test2=  findViewById(R.id.bt_path_test2);
+        bt_spider_view=  findViewById(R.id.bt_spider_view);
+        bt_bezier_view=  findViewById(R.id.bt_bezier_view);
+        bt_cibn=  findViewById(R.id.bt_cibn);
+        bt_elastic_ball=  findViewById(R.id.bt_elastic_ball);
+        bt_path_measure=  findViewById(R.id.bt_path_measure);
+        bt_path_search=  findViewById(R.id.bt_path_search);
         bt_test.setOnClickListener(this);
         bt_pie.setOnClickListener(this);
         bt_check.setOnClickListener(this);
@@ -48,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_cibn.setOnClickListener(this);
         bt_elastic_ball.setOnClickListener(this);
         bt_path_measure.setOnClickListener(this);
+        bt_path_search.setOnClickListener(this);
     }
 
     @Override
@@ -96,6 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_path_measure:
                 intent=new Intent(Action.ACTION_PATH_MEASURE);
+                startActivity(intent);
+                break;
+            case R.id.bt_path_search:
+                intent=new Intent(Action.ACTION_PATH_SEARCH);
                 startActivity(intent);
                 break;
         }

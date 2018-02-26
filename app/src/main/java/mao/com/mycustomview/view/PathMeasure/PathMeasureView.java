@@ -95,7 +95,7 @@ public class PathMeasureView extends View {
             currentValue = 0;
         }
 
-        pathMeasure.getPosTan(pathMeasure.getLength()*currentValue,pos,tan);// 获取当前位置的坐标以及趋势
+       /* pathMeasure.getPosTan(pathMeasure.getLength()*currentValue,pos,tan);// 获取当前位置的坐标以及趋势
 
         mMatrix.reset(); // 重置Matrix
         //当前点在曲线上的方向，使用 Math.atan2(tan[1], tan[0]) 获取到正切角的弧度值。
@@ -103,7 +103,13 @@ public class PathMeasureView extends View {
 
         mMatrix.postRotate(degrees,mBitmap.getWidth()/2,mBitmap.getHeight()/2);//旋转图片
         // 将图片绘制中心调整到与当前点重合
-        mMatrix.postTranslate(pos[0]-mBitmap.getWidth()/2,pos[1]-mBitmap.getHeight()/2);
+        mMatrix.postTranslate(pos[0]-mBitmap.getWidth()/2,pos[1]-mBitmap.getHeight()/2);*/
+
+        // 获取当前位置的坐标以及趋势的矩阵(getMatrix()得到路径上某一长度的位置以及该位置的正切值的矩阵)
+        //这一行代码相当于之前获取mMatrix的操作来封装，得到的Matrix已经封装好
+        pathMeasure.getMatrix(pathMeasure.getLength() * currentValue, mMatrix, PathMeasure.TANGENT_MATRIX_FLAG | PathMeasure.POSITION_MATRIX_FLAG);
+
+        mMatrix.preTranslate(-mBitmap.getWidth() / 2, -mBitmap.getHeight() / 2);   // 将图片绘制中心调整到与当前点重合(注意:此处是前乘pre)
 
         canvas.drawPath(path, mPaint);                                   // 绘制 Path
         canvas.drawBitmap(mBitmap, mMatrix, mPaint);                     // 绘制箭头

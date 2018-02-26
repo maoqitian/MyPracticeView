@@ -89,4 +89,11 @@
         android:layout_height="wrap_content"
         android:text="path_measure"
         />
+    <Button
+        android:id="@+id/bt_path_search"
+        app:layout_constraintTop_toBottomOf="@id/bt_spider_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="动效搜索"
+        />
 </android.support.constraint.ConstraintLayout>
