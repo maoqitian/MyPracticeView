@@ -96,4 +96,12 @@
         android:layout_height="wrap_content"
         android:text="动效搜索"
         />
+    <Button
+        android:id="@+id/bt_matrix_test"
+        app:layout_constraintLeft_toRightOf="@id/bt_path_search"
+        app:layout_constraintTop_toBottomOf="@id/bt_spider_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Matrix"
+        />
 </android.support.constraint.ConstraintLayout>

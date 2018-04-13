@@ -76,7 +76,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.Pathtest2Activiy">
+        <activity android:name=".activity.Pathtest2Activity">
             <intent-filter>
                 <action android:name="com.mao.mycustomview.action.PATH_TEST2" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -91,6 +91,12 @@
         <activity android:name=".activity.PathSearchActivity">
             <intent-filter>
                 <action android:name="com.mao.mycustomview.action.PATH_SEARCH" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.MatrixSetPolyToPolyTestActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.MATRIX_TEST" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

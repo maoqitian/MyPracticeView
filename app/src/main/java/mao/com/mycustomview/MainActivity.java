@@ -17,7 +17,7 @@ import mao.com.mycustomview.action.Action;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure,
-    bt_path_search;
+    bt_path_search,bt_matrix_test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_elastic_ball=  findViewById(R.id.bt_elastic_ball);
         bt_path_measure=  findViewById(R.id.bt_path_measure);
         bt_path_search=  findViewById(R.id.bt_path_search);
+        bt_matrix_test=  findViewById(R.id.bt_matrix_test);
         bt_test.setOnClickListener(this);
         bt_pie.setOnClickListener(this);
         bt_check.setOnClickListener(this);
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_elastic_ball.setOnClickListener(this);
         bt_path_measure.setOnClickListener(this);
         bt_path_search.setOnClickListener(this);
+        bt_matrix_test.setOnClickListener(this);
     }
 
     @Override
@@ -103,6 +105,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_path_search:
                 intent=new Intent(Action.ACTION_PATH_SEARCH);
+                startActivity(intent);
+            case R.id.bt_matrix_test:
+                intent=new Intent(Action.ACTION_MATRIX_TEST);
                 startActivity(intent);
                 break;
         }

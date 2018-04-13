@@ -21,5 +21,6 @@ public class Action {
     //滑动弹性小球
     public static final String ACTION_ELASTIC_BALL = "com.mao.mycustomview.action.ELASTIC_BALL";
     public static final String ACTION_PATH_SEARCH="com.mao.mycustomview.action.PATH_SEARCH";//动效搜索图标
+    public static final String ACTION_MATRIX_TEST="com.mao.mycustomview.action.MATRIX_TEST";//动效搜索图标
 }
 
