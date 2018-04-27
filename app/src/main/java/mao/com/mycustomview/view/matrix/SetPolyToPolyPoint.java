@@ -16,7 +16,7 @@ import com.gcssloop.view.utils.CanvasAidUtils;
 import mao.com.mycustomview.R;
 
 /**
- * Created by lenovo on 2018/4/13 0013.
+ * Created by maoqitian on 2018/4/13 0013.
  * 方法参数 pointCount 实测
  * boolean setPolyToPoly (
  float[] src,    // 原始数组 src [x,y]，存储内容为一组点

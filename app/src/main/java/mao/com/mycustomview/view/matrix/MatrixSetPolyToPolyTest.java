@@ -10,7 +10,7 @@ import android.view.View;
 import mao.com.mycustomview.R;
 
 /**
- * Created by lenovo on 2018/4/13 0013.
+ * Created by maoqitian on 2018/4/13 0013.
  * Matrix 测试
  */
 
