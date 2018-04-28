@@ -3,9 +3,14 @@ package mao.com.mycustomview.activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 
 import mao.com.mycustomview.R;
+import mao.com.mycustomview.animation.Rotate3dAnimation;
 import mao.com.mycustomview.view.matrix.MatrixSetPolyToPolyTest;
 import mao.com.mycustomview.view.matrix.SetPolyToPolyPoint;
 
@@ -22,6 +27,8 @@ public class MatrixSetPolyToPolyTestActivity extends AppCompatActivity {
         setContentView(R.layout.setpolytopoly_layout);
 
         final SetPolyToPolyPoint poly = findViewById(R.id.poly);
+
+        LinearLayout ll=findViewById(R.id.ll_view);
 
         RadioGroup group =  findViewById(R.id.group);
         assert group != null;
@@ -48,5 +55,25 @@ public class MatrixSetPolyToPolyTestActivity extends AppCompatActivity {
             }
         });
 
+        poly.setVisibility(View.GONE);
+        ll.setVisibility(View.GONE);
+        ImageView imageView=findViewById(R.id.imageView);
+        imageView.setVisibility(View.VISIBLE);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 计算中心点（这里是使用view的中心作为旋转的中心点）
+                final float centerX = v.getWidth() / 2.0f;
+                final float centerY = v.getHeight() / 2.0f;
+                //自定义动画
+                Rotate3dAnimation rotate3dAnimation=new Rotate3dAnimation(
+                        MatrixSetPolyToPolyTestActivity.this,0,
+                        180, centerX, centerY, 0f, true);
+                rotate3dAnimation.setDuration(3000);
+                rotate3dAnimation.setFillAfter(true);
+                rotate3dAnimation.setInterpolator(new LinearInterpolator());
+                v.startAnimation(rotate3dAnimation);
+            }
+        });
     }
 }

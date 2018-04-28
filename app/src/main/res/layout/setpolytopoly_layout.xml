@@ -11,6 +11,7 @@
         />
 
     <LinearLayout
+        android:id="@+id/ll_view"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
@@ -53,4 +54,12 @@
         </RadioGroup>
     </LinearLayout>
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone"
+        android:layout_centerInParent="true"
+        android:src="@drawable/matrix_test"
+        />
 </RelativeLayout>
