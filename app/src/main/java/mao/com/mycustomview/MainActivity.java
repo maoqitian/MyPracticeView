@@ -17,7 +17,7 @@ import mao.com.mycustomview.action.Action;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure,
-    bt_path_search,bt_matrix_test;
+    bt_path_search,bt_matrix_test,bt_matrix_login;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_path_measure=  findViewById(R.id.bt_path_measure);
         bt_path_search=  findViewById(R.id.bt_path_search);
         bt_matrix_test=  findViewById(R.id.bt_matrix_test);
+        bt_matrix_login = findViewById(R.id.bt_matrix_login);
         bt_test.setOnClickListener(this);
         bt_pie.setOnClickListener(this);
         bt_check.setOnClickListener(this);
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_path_measure.setOnClickListener(this);
         bt_path_search.setOnClickListener(this);
         bt_matrix_test.setOnClickListener(this);
+        bt_matrix_login.setOnClickListener(this);
     }
 
     @Override
@@ -108,6 +110,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 startActivity(intent);
             case R.id.bt_matrix_test:
                 intent=new Intent(Action.ACTION_MATRIX_TEST);
+                startActivity(intent);
+                break;
+            case R.id.bt_matrix_login:
+                intent=new Intent(Action.ACTION_MATRIX_LOGIN);
                 startActivity(intent);
                 break;
         }

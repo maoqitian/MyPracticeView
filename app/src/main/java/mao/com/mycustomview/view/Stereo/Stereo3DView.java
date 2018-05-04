@@ -5,13 +5,15 @@ import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
-import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
 import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
+import android.view.animation.Interpolator;
 import android.widget.Scroller;
+
+import mao.com.mycustomview.Utils.LogUtil;
 
 /**
  * Created by maoqitian on 2018/4/28 0028.
@@ -24,10 +26,12 @@ public class Stereo3DView extends ViewGroup{
     private int mStartScreen = 1;//开始时的item位置
     private Scroller mScroller;
     private float resistance = 1.8f;//滑动阻力
+    private float mAngle = 90;//两个item间的夹角
+    private boolean isCan3D = true;//是否开启3D效果
 
     private Camera mCamera;
     private Matrix mMatrix;
-
+    private Context mContext;
     private int mWidth;//容器的宽度
     private int mHeight;//容器的高度
     private float mDownX, mDownY, mTempY;
@@ -39,6 +43,7 @@ public class Stereo3DView extends ViewGroup{
     private static final int standerSpeed = 2000;//正常速度
     private static final int flingSpeed = 800;//猛滑得速度
     private int alreadyAdd = 0;//对滑动多页时的已经新增页面次数的记录
+    private boolean isAdding = false;//fling时正在添加新页面，在绘制时不需要开启camera绘制效果，否则页面会有闪动
     private int addCount;//记录手离开屏幕后，需要新增的页面次数
     private State mState = State.Normal;//状态
 
@@ -58,7 +63,8 @@ public class Stereo3DView extends ViewGroup{
 
     public Stereo3DView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        init(context);
+        this.mContext=context;
+        init(mContext);
     }
 
     //初始化
@@ -103,10 +109,45 @@ public class Stereo3DView extends ViewGroup{
         super.onDraw(canvas);
     }
 
+    //绘制子View
     @Override
     protected void dispatchDraw(Canvas canvas) {
-        super.dispatchDraw(canvas);
-        //TODO 分发之后画出效果 还未实现 3D的效果
+        if(!isAdding && isCan3D){
+            for (int i = 0; i <getChildCount(); i++) {
+                drawScreen(canvas,i,getDrawingTime());
+            }
+        }else {
+            isAdding=false;
+            super.dispatchDraw(canvas);
+        }
+    }
+    //绘制ViewGroup 的子View
+    private void drawScreen(Canvas canvas, int i, long drawingTime) {
+        int curScreenY = i * mHeight;
+        //屏幕不显示的部分不进行绘制
+        if(getScrollY()+mHeight<curScreenY){
+           return;
+        }
+        if(curScreenY<getScrollY()-mHeight){
+           return;
+        }
+
+        float centerX = mWidth/2;
+        float centerY = (getScrollY()>curScreenY) ? curScreenY+mHeight: curScreenY ;
+        float degree = mAngle *(getScrollY() - curScreenY)/mHeight;
+        if(degree >90 || degree <-90){
+            return;
+        }
+        canvas.save();
+        mCamera.save();
+        mCamera.rotateX(degree);
+        mCamera.getMatrix(mMatrix);
+        mCamera.restore();
+        mMatrix.preTranslate(-centerX,-centerY);
+        mMatrix.postTranslate(centerX,centerY);
+        canvas.concat(mMatrix);
+        drawChild(canvas,getChildAt(i),drawingTime);
+        canvas.restore();
     }
 
     @Override
@@ -116,8 +157,8 @@ public class Stereo3DView extends ViewGroup{
         switch (ev.getAction()){
             case MotionEvent.ACTION_DOWN :
                 isSliding=false;
-                mDownX =x;
-                mTempY=mDownY=y;
+                mDownX = x;
+                mTempY = mDownY = y;
                 if(!mScroller.isFinished()){
                     //当上一次滑动没有结束时，再次点击，强制滑动在点击位置结束
                     mScroller.setFinalY(mScroller.getCurrY());
@@ -131,6 +172,8 @@ public class Stereo3DView extends ViewGroup{
                    isSliding = isCanSliding(ev);
                 }
                 break;
+            default:
+                break;
         }
         return super.dispatchTouchEvent(ev);
 
@@ -141,7 +184,7 @@ public class Stereo3DView extends ViewGroup{
         float moveX;
         float moveY;
         moveX=ev.getX();
-        mTempY=moveY=ev.getY();
+        mTempY = moveY = ev.getY();
         if(Math.abs(moveY - mDownX)>mTouchSlop && (Math.abs(moveY - mDownY)>(Math.abs(moveX - mDownY)))){
            return true;
         }
@@ -177,7 +220,7 @@ public class Stereo3DView extends ViewGroup{
                 if(isSliding){
                    isSliding=false;
                    mVelocityTracker.computeCurrentVelocity(1000);
-                    float yVelocity = mVelocityTracker.getYVelocity();
+                    float yVelocity = mVelocityTracker.getYVelocity();//通过 getYVelocity获取速度
                     //滑动的速度大于规定的速度，或者向上滑动时，上一页页面展现出的高度超过1/2。则设定状态为State.ToPre
                     if(yVelocity>standerSpeed || ((getScrollY()+mHeight/2)/mHeight < mStartScreen)){
                        mState=State.ToPre;
@@ -213,6 +256,38 @@ public class Stereo3DView extends ViewGroup{
             case ToNext:
                 toNextAction(yVelocity);
                 break;
+        }
+    }
+    //mScroller.startScroll 方法会回调这个方法
+    @Override
+    public void computeScroll() {
+        //滑动没有结束时进行操作
+        if(mScroller.computeScrollOffset()){
+           if(mState == State.ToPre){
+              scrollTo(mScroller.getCurrX(),mScroller.getCurrY() + mHeight*alreadyAdd);
+              if(getScrollY()<(mHeight+2) && addCount >0){
+                  isAdding = true;
+                  addPre();
+                  alreadyAdd ++ ;
+                  addCount -- ;
+              }
+           }else if(mState == State.ToNext){
+               scrollTo(mScroller.getCurrX(),mScroller.getCurrY() - mHeight*alreadyAdd);
+               if(getScrollY() >mHeight && addCount >0){
+                   isAdding = true;
+                   addNext();
+                   alreadyAdd ++ ;
+                   addCount -- ;
+               }
+           }else { //mState == State.Normal状态
+               scrollTo(mScroller.getCurrX(),mScroller.getCurrY());
+           }
+           postInvalidate();
+        }
+        //滑动结束时相关用于计数变量复位
+        if(mScroller.isFinished()){
+            alreadyAdd = 0;
+            addCount =0;
         }
     }
 
@@ -315,6 +390,113 @@ public class Stereo3DView extends ViewGroup{
         if(mIStereoListener!=null){
             mIStereoListener.toPre(mCurScreen);
         }
+    }
+
+    /**
+     * 对外提供的方法
+     */
+
+    /**
+     * 设置展示的第一个页面
+     * @param startScreen 范围 0 ---  getChildCount()-1
+     * @return
+     */
+    public Stereo3DView setStartScreen(int startScreen){
+        if(startScreen <=0 || startScreen >= (getChildCount()-1)){
+            throw new IndexOutOfBoundsException("请输入规定范围内startScreen位置号");
+        }
+        this.mStartScreen = startScreen;
+        this.mCurScreen = startScreen;
+        return this;
+    }
+
+    /**
+     * 设置移动阻力
+     * @param resistance
+     * @return
+     */
+    public Stereo3DView setResistance(float resistance){
+        this.resistance =resistance;
+        return this;
+    }
+
+    /**
+     * 设置滚动时的插补器
+     * @param mInterpolator
+     * @return
+     */
+    public Stereo3DView setInterpolator(Interpolator mInterpolator){
+        mScroller=new Scroller(mContext,mInterpolator);
+        return this;
+    }
+
+    /**
+     * 设置滚动时两个item 的夹角度数
+     * @param mAngle [ 0f,180f]
+     * @return
+     */
+    public Stereo3DView setAngle(float mAngle){
+        this.mAngle=180f-mAngle;
+        return this;
+    }
+
+    /**
+     * 是否开启3D效果
+     * @param can3D
+     * @return
+     */
+    public Stereo3DView setCan3D(boolean can3D){
+        this.isCan3D = can3D;
+        return this;
+    }
+
+    /**
+     * 跳转到指定的Item
+     * @param itemId [0,getChildCount() -1]
+     * @return
+     */
+    public Stereo3DView setItem(int itemId){
+        LogUtil.m("之前curScreen " + mCurScreen);
+      if(!mScroller.isFinished()){
+          mScroller.abortAnimation();
+          LogUtil.m("强制完成");
+      }
+      if(itemId < 0 || itemId > (getChildCount() -1 )){
+          throw new IndexOutOfBoundsException("请输入规定范围内startScreen位置号");
+      }
+      if(itemId > mCurScreen){
+         toNextAction( -standerSpeed - flingSpeed * (itemId - mCurScreen -1));
+      }else if(itemId < mCurScreen){
+         toPreAction(standerSpeed + (mCurScreen - itemId -1) * flingSpeed);
+      }
+        LogUtil.m("之后curScreen " + mCurScreen + " getScrollY " + getScrollY());
+        return this;
+    }
+
+    /**
+     * 上一页
+     * @return
+     */
+    public Stereo3DView toPre(){
+        if(!mScroller.isFinished()){
+            mScroller.abortAnimation();
+            LogUtil.m("强制完成");
+        }
+        toPreAction(standerSpeed);
+        return this;
+    }
+
+    /**
+     * 下一页
+     * @return
+     */
+    public Stereo3DView toNext(){
+        if(!mScroller.isFinished()){
+            mScroller.abortAnimation();
+            LogUtil.m("强制完成");
+        }
+        toNextAction(-standerSpeed);
+        return this;
     }
 
     //滑动回调接口

@@ -100,6 +100,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LoginActivity"
+            >
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.MATRIX_LOGIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
