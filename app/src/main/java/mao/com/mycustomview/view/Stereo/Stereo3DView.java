@@ -55,10 +55,12 @@ public class Stereo3DView extends ViewGroup{
 
     public Stereo3DView(Context context) {
         super(context,null);
+        init(context);
     }
 
     public Stereo3DView(Context context, AttributeSet attrs) {
         super(context, attrs,0);
+        init(context);
     }
 
     public Stereo3DView(Context context, AttributeSet attrs, int defStyleAttr) {

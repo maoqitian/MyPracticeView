@@ -6,6 +6,17 @@ package mao.com.mycustomview.action;
  */
 
 public class Action {
+
+    public static String TAG1 = "MainActivity [老板]";
+    public static String TAG2 = "RootView     [经理]";
+    public static String TAG3 = "ViewGroupA   [组长]";
+    public static String TAG4 = "View1        [码农]";
+
+
+    public static String dispatchTouchEvent    = "dispatchTouchEvent     ";
+    public static String onInterceptTouchEvent = "onInterceptTouchEvent  ";
+    public static String onTouchEvent          = "onTouchEvent           ";
+
     public static final String ACTION_PIE_VIEW = "com.mao.mycustomview.action.PIE_VIEW";
     public static final String ACTION_TEST_VIEW = "com.mao.mycustomview.action.TEST_VIEW";
     public static final String ACTION_CHECK_VIEW = "com.mao.mycustomview.action.CHECK_VIEW";
@@ -22,6 +33,7 @@ public class Action {
     public static final String ACTION_ELASTIC_BALL = "com.mao.mycustomview.action.ELASTIC_BALL";
     public static final String ACTION_PATH_SEARCH="com.mao.mycustomview.action.PATH_SEARCH";//动效搜索图标
     public static final String ACTION_MATRIX_TEST="com.mao.mycustomview.action.MATRIX_TEST";//MATRIX 测试
-    public static final String ACTION_MATRIX_LOGIN="com.mao.mycustomview.action.MATRIX_LOGIN";
+    public static final String ACTION_MATRIX_LOGIN="com.mao.mycustomview.action.MATRIX_LOGIN";//3D旋转登录
+    public static final String ACTION_DISPATCH_TOUCH_EVENT="com.mao.mycustomview.action.DISPATCH_TOUCH_EVENT";
 }
 

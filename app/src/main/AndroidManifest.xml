@@ -101,9 +101,16 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.LoginActivity"
+            android:hardwareAccelerated="false"
             >
             <intent-filter>
                 <action android:name="com.mao.mycustomview.action.MATRIX_LOGIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.DispatchTouchEventTestActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.DISPATCH_TOUCH_EVENT" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>

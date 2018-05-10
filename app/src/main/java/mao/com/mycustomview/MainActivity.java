@@ -17,7 +17,7 @@ import mao.com.mycustomview.action.Action;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure,
-    bt_path_search,bt_matrix_test,bt_matrix_login;
+    bt_path_search,bt_matrix_test,bt_matrix_login,bt_dispatch_touch_event;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_path_search=  findViewById(R.id.bt_path_search);
         bt_matrix_test=  findViewById(R.id.bt_matrix_test);
         bt_matrix_login = findViewById(R.id.bt_matrix_login);
+        bt_dispatch_touch_event=findViewById(R.id.bt_dispatch_touch_event);
         bt_test.setOnClickListener(this);
         bt_pie.setOnClickListener(this);
         bt_check.setOnClickListener(this);
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_path_search.setOnClickListener(this);
         bt_matrix_test.setOnClickListener(this);
         bt_matrix_login.setOnClickListener(this);
+        bt_dispatch_touch_event.setOnClickListener(this);
     }
 
     @Override
@@ -62,61 +64,56 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent intent;
         switch (v.getId()){
             case R.id.bt_pie://饼状图
-                intent=new Intent(Action.ACTION_PIE_VIEW);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_PIE_VIEW);
                 break;
             case R.id.bt_test:
-                intent=new Intent(Action.ACTION_TEST_VIEW);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_TEST_VIEW);
                 break;
             case R.id.bt_check:
-                intent=new Intent(Action.ACTION_CHECK_VIEW);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_CHECK_VIEW);
                 break;
             case R.id.bt_loading:
-                intent=new Intent(Action.ACTION_LEAF_LOADING_VIEW);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_LEAF_LOADING_VIEW);
                 break;
             case R.id.bt_path_test:
-                intent=new Intent(Action.ACTION_PATH_TEST);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_PATH_TEST);
                 break;
             case R.id.bt_spider_view:
-                intent=new Intent(Action.ACTION_SPIDER_VIEW);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_SPIDER_VIEW);
                 break;
             case R.id.bt_bezier_view:
-                intent=new Intent(Action.ACTION_BEZIER_VIEW);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_BEZIER_VIEW);
                 break;
             case R.id.bt_cibn:
-                intent=new Intent(Action.ACTION_CIBN);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_CIBN);
                 break;
             case R.id.bt_elastic_ball:
-                intent=new Intent(Action.ACTION_ELASTIC_BALL);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_ELASTIC_BALL);
                 break;
             case R.id.bt_path_test2:
-                intent=new Intent(Action.ACTION_PATH_TEST2);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_PATH_TEST2);
                 break;
             case R.id.bt_path_measure:
-                intent=new Intent(Action.ACTION_PATH_MEASURE);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_PATH_MEASURE);
                 break;
             case R.id.bt_path_search:
-                intent=new Intent(Action.ACTION_PATH_SEARCH);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_PATH_SEARCH);
+                break;
             case R.id.bt_matrix_test:
-                intent=new Intent(Action.ACTION_MATRIX_TEST);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_MATRIX_TEST);
                 break;
             case R.id.bt_matrix_login:
-                intent=new Intent(Action.ACTION_MATRIX_LOGIN);
-                startActivity(intent);
+                MyStartActivity(Action.ACTION_MATRIX_LOGIN);
+                break;
+            case R.id.bt_dispatch_touch_event:
+                MyStartActivity(Action.ACTION_DISPATCH_TOUCH_EVENT);
                 break;
         }
+    }
+
+    public void MyStartActivity(String action){
+        Intent intent=new Intent(action);
+        startActivity(intent);
     }
 
     @Override
