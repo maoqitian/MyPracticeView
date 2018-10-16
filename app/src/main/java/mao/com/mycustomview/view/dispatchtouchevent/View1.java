@@ -27,6 +27,9 @@ import android.view.View;
 
 import mao.com.mycustomview.action.Action;
 
+/**
+ * 码农
+ */
 public class View1 extends View {
     private static final String TAG = Action.TAG4;
 
@@ -47,7 +50,7 @@ public class View1 extends View {
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
             //Log.i(TAG, Action.dispatchTouchEvent+"做淘宝???");
-            Log.i(TAG, Action.dispatchTouchEvent+"加一道光.");
+            Log.i(TAG, Action.dispatchTouchEvent+"VIP功能？");
         }
         return super.dispatchTouchEvent(event);
     }

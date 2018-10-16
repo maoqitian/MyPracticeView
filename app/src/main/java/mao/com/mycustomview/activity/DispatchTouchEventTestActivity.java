@@ -11,7 +11,7 @@ import mao.com.mycustomview.action.Action;
 
 /**
  * Created by maoqitian on 2018/5/10 0010.
- * 事件分发机制测试
+ * 事件分发机制测试 老板
  */
 
 public class DispatchTouchEventTestActivity extends AppCompatActivity {
@@ -39,6 +39,7 @@ public class DispatchTouchEventTestActivity extends AppCompatActivity {
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN){
             //Log.i(TAG, Action.onTouchEvent+"这么简单都做不了,你们都是干啥的(愤怒).");
+            Log.i(TAG, Action.onTouchEvent+"....");
             Log.i(TAG, Action.onTouchEvent);
         }
         return super.onTouchEvent(event);

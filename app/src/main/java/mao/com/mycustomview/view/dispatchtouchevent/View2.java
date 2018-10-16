@@ -21,9 +21,17 @@ package mao.com.mycustomview.view.dispatchtouchevent;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
+import mao.com.mycustomview.action.Action;
+
+/**
+ * 扫地阿姨
+ */
 public class View2 extends View {
+    private static final String TAG = Action.TAG5;
     public View2(Context context) {
         super(context);
     }
@@ -34,5 +42,23 @@ public class View2 extends View {
 
     public View2(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if(event.getAction() == MotionEvent.ACTION_DOWN){
+            Log.i(TAG, Action.dispatchTouchEvent+"我只是个扫地阿姨，我不懂你说什么");
+
+        }
+        return super.dispatchTouchEvent(event);
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
+            Log.i(TAG, Action.onTouchEvent+"经理你问错人了，去问老板吧");
+        }
+        return super.onTouchEvent(event);
     }
 }

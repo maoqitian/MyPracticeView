@@ -27,6 +27,9 @@ import android.widget.RelativeLayout;
 
 import mao.com.mycustomview.action.Action;
 
+/**
+ * 组长
+ */
 public class ViewGroupA extends RelativeLayout {
     private static final String TAG = Action.TAG3;
 
@@ -46,7 +49,7 @@ public class ViewGroupA extends RelativeLayout {
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             //Log.i(TAG, Action.dispatchTouchEvent + "老板要做淘宝,下周上线?");
-            //Log.i(TAG, Action.dispatchTouchEvent + "给按钮加上一道光.");
+            //Log.i(TAG, Action.dispatchTouchEvent + "加上超级VIP功能");
             Log.i(TAG, Action.dispatchTouchEvent + "项目进度?");
         }
 
@@ -57,11 +60,12 @@ public class ViewGroupA extends RelativeLayout {
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
             //Log.i(TAG, Action.onInterceptTouchEvent + "(看着不太靠谱,先问问小王怎么看)");
+            Log.i(TAG, Action.onInterceptTouchEvent + "我问问小王");
             Log.i(TAG, Action.onInterceptTouchEvent);
         }
 
-         //return super.onInterceptTouchEvent(ev);
-        return true;//拦截事件 onTouchEvent 中进行处理
+         return super.onInterceptTouchEvent(ev);
+        //return true;//拦截事件 onTouchEvent 中进行处理
     }
 
     @Override
