@@ -48,9 +48,10 @@ public class ViewGroupA extends RelativeLayout {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            //Log.i(TAG, Action.dispatchTouchEvent + "老板要做淘宝,下周上线?");
-            //Log.i(TAG, Action.dispatchTouchEvent + "加上超级VIP功能");
-            Log.i(TAG, Action.dispatchTouchEvent + "项目进度?");
+            //Log.i(TAG, Action.dispatchTouchEvent + "老板要造宇宙飞船？？");
+            Log.i(TAG, Action.dispatchTouchEvent + "组员表现情况？");
+            //Log.i(TAG, Action.dispatchTouchEvent + "项目进度?");
+
         }
 
         return super.dispatchTouchEvent(ev);
@@ -59,22 +60,20 @@ public class ViewGroupA extends RelativeLayout {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            //Log.i(TAG, Action.onInterceptTouchEvent + "(看着不太靠谱,先问问小王怎么看)");
-            Log.i(TAG, Action.onInterceptTouchEvent + "我问问小王");
-            Log.i(TAG, Action.onInterceptTouchEvent);
+            Log.i(TAG, Action.onInterceptTouchEvent + "我看看组员绩效情况");
+            //Log.i(TAG, Action.onInterceptTouchEvent + "我问问程序员");
+            //Log.i(TAG, Action.onInterceptTouchEvent);
         }
-
-         return super.onInterceptTouchEvent(ev);
-        //return true;//拦截事件 onTouchEvent 中进行处理
+         //return super.onInterceptTouchEvent(ev);
+        return true;//拦截事件 onTouchEvent 中进行处理
     }
-
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            //Log.i(TAG, Action.onTouchEvent + "小王说做不了");
+            //Log.i(TAG, Action.onTouchEvent + "程序员说做不了");
             //Log.i(TAG, Action.onTouchEvent);
-            Log.i(TAG, Action.onTouchEvent+"正在测试,明天就测试完了");
+            Log.i(TAG, Action.onTouchEvent+"技术部组员最近表现都很好,项目按时完成，没有迟到早退");
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 }

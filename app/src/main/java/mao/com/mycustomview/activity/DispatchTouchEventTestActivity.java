@@ -28,9 +28,9 @@ public class DispatchTouchEventTestActivity extends AppCompatActivity {
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {
         if (ev.getAction() == MotionEvent.ACTION_DOWN){
-            //Log.i(TAG, Action.dispatchTouchEvent+"经理,我准备发展一下电商业务,下周之前做一个淘宝出来.");
-            //Log.i(TAG, Action.dispatchTouchEvent+"把按钮做的好看一点,要有光泽,给人一种点击的欲望.");
-            Log.i(TAG, Action.dispatchTouchEvent+"现在项目做到什么程度了?");
+            //Log.i(TAG, Action.dispatchTouchEvent+"经理,我有个大胆的想法,今年造个宇宙飞船出来.");
+            //Log.i(TAG, Action.dispatchTouchEvent+"经理,现在项目做到什么程度了?");
+            Log.i(TAG, Action.dispatchTouchEvent+"经理,问问技术部这个月的表现情况");
         }
         return super.dispatchTouchEvent(ev);
     }
@@ -38,9 +38,9 @@ public class DispatchTouchEventTestActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN){
-            //Log.i(TAG, Action.onTouchEvent+"这么简单都做不了,你们都是干啥的(愤怒).");
-            Log.i(TAG, Action.onTouchEvent+"....");
-            Log.i(TAG, Action.onTouchEvent);
+            Log.i(TAG, Action.onTouchEvent+"套你猴子，我想多了.");
+            //Log.i(TAG, Action.onTouchEvent+"....");
+            //Log.i(TAG, Action.onTouchEvent);
         }
         return super.onTouchEvent(event);
     }

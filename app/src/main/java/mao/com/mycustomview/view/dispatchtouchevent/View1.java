@@ -44,13 +44,13 @@ public class View1 extends View {
     public View1(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
-
     //View最为事件传递的最末端，要么消费掉事件，要么不处理进行回传，根本没必要进行事件拦截
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            //Log.i(TAG, Action.dispatchTouchEvent+"做淘宝???");
-            Log.i(TAG, Action.dispatchTouchEvent+"VIP功能？");
+            Log.i(TAG, Action.dispatchTouchEvent+"宇宙飞船??? MMP");
+            //Log.i(TAG, Action.dispatchTouchEvent+"VIP功能？");
+            //Log.i(TAG, Action.dispatchTouchEvent+"app完成进度么？");
         }
         return super.dispatchTouchEvent(event);
     }
@@ -58,9 +58,10 @@ public class View1 extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            //Log.i(TAG, Action.onTouchEvent+"这个真心做不了啊");
-            Log.i(TAG, Action.onTouchEvent+"做好了.");
+            Log.i(TAG, Action.onTouchEvent+"这个真心做不了啊，把我做了吧");
+            //Log.i(TAG, Action.onTouchEvent+"好，我去弄");
+            //Log.i(TAG, Action.onTouchEvent+"做好了.");
         }
-        return true;
+        return super.onTouchEvent(event);
     }
 }
