@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyCustomView.iml" filepath="$PROJECT_DIR$/MyCustomView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cibn-library/cibn-library.iml" filepath="$PROJECT_DIR$/cibn-library/cibn-library.iml" />
     </modules>
   </component>
 </project>

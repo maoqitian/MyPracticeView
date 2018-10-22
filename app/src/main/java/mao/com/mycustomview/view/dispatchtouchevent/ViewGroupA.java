@@ -53,7 +53,6 @@ public class ViewGroupA extends RelativeLayout {
             //Log.i(TAG, Action.dispatchTouchEvent + "项目进度?");
 
         }
-
         return super.dispatchTouchEvent(ev);
     }
 
