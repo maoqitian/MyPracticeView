@@ -35,5 +35,7 @@ public class Action {
     public static final String ACTION_MATRIX_TEST="com.mao.mycustomview.action.MATRIX_TEST";//MATRIX 测试
     public static final String ACTION_MATRIX_LOGIN="com.mao.mycustomview.action.MATRIX_LOGIN";//3D旋转登录
     public static final String ACTION_DISPATCH_TOUCH_EVENT="com.mao.mycustomview.action.DISPATCH_TOUCH_EVENT";
+
+    public static final String ACTION_LOTTIE="com.mao.mycustomview.action.LOTTIE"; //动画库lottie 测试
 }
 

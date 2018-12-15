@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Button bt_pie,bt_test,bt_check,bt_loading_view,bt_path_test,bt_path_test2,bt_spider_view,bt_bezier_view,bt_cibn,bt_elastic_ball,bt_path_measure,
-    bt_path_search,bt_matrix_test,bt_matrix_login,bt_dispatch_touch_event;
+    bt_path_search,bt_matrix_test,bt_matrix_login,bt_dispatch_touch_event,bt_lottie;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_matrix_test=  findViewById(R.id.bt_matrix_test);
         bt_matrix_login = findViewById(R.id.bt_matrix_login);
         bt_dispatch_touch_event=findViewById(R.id.bt_dispatch_touch_event);
+        bt_lottie=findViewById(R.id.bt_lottie);
         bt_test.setOnClickListener(this);
         bt_pie.setOnClickListener(this);
         bt_check.setOnClickListener(this);
@@ -134,6 +135,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         bt_matrix_test.setOnClickListener(this);
         bt_matrix_login.setOnClickListener(this);
         bt_dispatch_touch_event.setOnClickListener(this);
+        bt_lottie.setOnClickListener(this);
     }
 
     @Override
@@ -184,6 +186,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.bt_dispatch_touch_event:
                 MyStartActivity(Action.ACTION_DISPATCH_TOUCH_EVENT);
+                break;
+            case R.id.bt_lottie:
+                MyStartActivity(Action.ACTION_LOTTIE);
                 break;
         }
     }

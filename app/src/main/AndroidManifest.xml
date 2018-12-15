@@ -114,6 +114,12 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".activity.LottieActivity">
+            <intent-filter>
+                <action android:name="com.mao.mycustomview.action.LOTTIE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
