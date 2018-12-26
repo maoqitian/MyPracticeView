@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+
 import java.io.IOException;
 
 import java.util.List;
@@ -51,14 +53,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }*/
 
         // Create a very simple REST adapter which points the GitHub API.
-        Retrofit retrofit=new Retrofit.Builder()
+        /*Retrofit retrofit=new Retrofit.Builder()
                 .baseUrl(GitHub.API_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         // Create an instance of our GitHub API interface.
         GitHub gitHub = retrofit.create(GitHub.class);
         // Create a call instance for looking up Retrofit contributors.
-        final retrofit2.Call<List<SimpleService.Contributor>> call = gitHub.contributors("square", "retrofit");
+        final retrofit2.Call<List<SimpleService.Contributor>> call = gitHub.contributors("square", "retrofit");*/
         // Fetch and print a list of the contributors to the library.
         /*call.enqueue(new retrofit2.Callback<List<SimpleService.Contributor>>() {
             @Override
@@ -90,16 +92,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 } catch (IOException e) {
                     e.printStackTrace();
                 }*/
-                try {
+                /*try {
                     List<SimpleService.Contributor> contributors = call.execute().body();
                     for (SimpleService.Contributor contributor : contributors) {
                         Log.e("maoqitian","Retrofit同步请求返回参数"+contributor.login + " (" + contributor.contributions + ")");
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }*/
             }
         }.start();
+
+        Glide.with(this).load("");
     }
 
 
